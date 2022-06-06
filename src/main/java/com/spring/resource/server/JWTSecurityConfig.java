@@ -15,12 +15,10 @@ public class JWTSecurityConfig extends WebSecurityConfigurerAdapter {
 						.antMatchers(HttpMethod.GET, "/foos/**").hasAuthority("SCOPE_read")
 						.antMatchers(HttpMethod.POST, "/foos").hasAuthority("SCOPE_write")
 						.anyRequest().authenticated())
-				.oauth2ResourceServer(oauth2 -> oauth2.jwt()
-				);
-				/*.oauth2ResourceServer(oauth2 -> oauth2
+				.oauth2ResourceServer(oauth2 -> oauth2
 						.jwt(jwt -> jwt
-								.jwkSetUri("http://localhost:9000/.well-known/jwks2.json")
+								.jwkSetUri("http://localhost:9000/oauth2/jwks")
 						)
-				);*/
+				);
 	}
 }
